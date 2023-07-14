@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Code/Android/DJMedia/demos/main/src/main/res/layout/activity_main.xml" value="0.20625" />
+        <entry key="..\:/Code/Android/DJMedia/demos/main/src/main/res/layout/activity_vod_play.xml" value="0.2128623188405797" />
+        <entry key="..\:/Code/Android/DJMedia/demos/main/src/main/res/layout/fragment_video_play.xml" value="0.1" />
+        <entry key="..\:/Code/Android/DJMedia/demos/main/src/main/res/layout/layout_dj_compat_video_player.xml" value="0.1" />
+        <entry key="..\:/Code/Android/DJMedia/libraries/ui/src/main/res/layout/fu_media_notification_big.xml" value="0.5775623268698061" />
+        <entry key="..\:/Code/Android/DJMedia/libraries/ui/src/main/res/layout/fu_view_video_state_ended.xml" value="0.2164855072463768" />
+        <entry key="..\:/Code/Android/DJMedia/libraries/ui/src/main/res/xml/allowed_media_browser_callers.xml" value="0.21739130434782608" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
