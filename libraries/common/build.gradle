@@ -6,14 +6,5 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:' + androidxTestJUnitVersion
     androidTestImplementation 'androidx.test.espresso:espresso-core:' + androidxTestEspressoVersion
 
-    api project(path: ':libraries:common')
-
-    api 'com.github.fulvmei.Media:ui:' + mediaVersion
+    api 'com.github.fulvmei.Media:common:' + mediaVersion
 }
-
-//ext {
-//    releaseArtifactId = 'djmedia-ui'
-//    releaseName = 'Media UI module'
-//}
-//
-//apply from: '../../publish.gradle'

@@ -6,12 +6,14 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:' + androidxTestJUnitVersion
     androidTestImplementation 'androidx.test.espresso:espresso-core:' + androidxTestEspressoVersion
 
-    api 'com.github.fulvmei.Media:media-session:' + mediaVersion
+    api project(path: ':libraries:common')
+
+    api 'com.github.fulvmei.Media:session:' + mediaVersion
 }
 
-ext {
-    releaseArtifactId = 'djmedia-session'
-    releaseName = 'Media Session module'
-}
-
-apply from: '../../publish.gradle'
+//ext {
+//    releaseArtifactId = 'djmedia-session'
+//    releaseName = 'Media Session module'
+//}
+//
+//apply from: '../../publish.gradle'
