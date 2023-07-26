@@ -11,9 +11,9 @@ dependencies {
     api 'com.github.fulvmei.Media:ui:' + mediaVersion
 }
 
-//ext {
-//    releaseArtifactId = 'djmedia-ui'
-//    releaseName = 'Media UI module'
-//}
-//
-//apply from: '../../publish.gradle'
+ext {
+    releaseArtifactId = 'ui'
+    releaseName = 'DJMedia UI module'
+}
+
+apply from: '../../publish.gradle'

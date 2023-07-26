@@ -11,6 +11,7 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         maven { url "https://jitpack.io" }
+        mavenLocal()
     }
 }
 def rootDir = file(".")
@@ -25,5 +26,4 @@ include ':libraries:session'
 include ':libraries:ui'
 
 
-
-
+include ':demos:session'

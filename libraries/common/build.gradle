@@ -8,3 +8,10 @@ dependencies {
 
     api 'com.github.fulvmei.Media:common:' + mediaVersion
 }
+
+ext {
+    releaseArtifactId = 'common'
+    releaseName = 'DJMedia Common module'
+}
+
+apply from: '../../publish.gradle'
