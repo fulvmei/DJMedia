@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.media3.common.MediaItem;
@@ -12,23 +13,23 @@ import androidx.media3.common.MediaMetadata;
 import androidx.media3.common.Player;
 import androidx.media3.common.Timeline;
 import androidx.media3.common.Tracks;
-import androidx.media3.exoplayer.ExoPlayer;
+import androidx.media3.session.LibraryResult;
 import androidx.media3.session.MediaBrowser;
+import androidx.media3.session.MediaController;
 import androidx.media3.session.MediaLibraryService;
 import androidx.media3.session.SessionCommand;
+import androidx.media3.session.SessionResult;
 import androidx.media3.session.SessionToken;
 
 import com.fulvmei.android.djmedia.session.DJPlaybackService;
-import com.fulvmei.android.djmedia.session.TimingOffWorker;
-import com.fulvmei.android.media.session.PlaybackService;
 import com.fulvmei.android.media.ui.ControlView;
+import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.MoreExecutors;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
-import java.util.function.Function;
 
 public class PlayerActivity extends AppCompatActivity {
 
@@ -45,10 +46,12 @@ public class PlayerActivity extends AppCompatActivity {
 
         ListenableFuture<MediaBrowser> mediaControllerFuture = new MediaBrowser.Builder(this, new SessionToken(this, new ComponentName(this, DJPlaybackService.class)))
                 .setListener(new MediaBrowser.Listener() {
+
+                    @NonNull
                     @Override
-                    public void onSearchResultChanged(MediaBrowser browser, String query, int itemCount, @Nullable MediaLibraryService.LibraryParams params) {
-                        Log.e("GGGG", "onSearchResultChanged query=" +query);
-                        MediaBrowser.Listener.super.onSearchResultChanged(browser, query, itemCount, params);
+                    public ListenableFuture<SessionResult> onCustomCommand(@NonNull MediaController controller, @NonNull SessionCommand command, @NonNull Bundle args) {
+                        Log.e("GGGG", "onCustomCommand command=" +command);
+                        return Futures.immediateFuture(new SessionResult(SessionResult.RESULT_ERROR_NOT_SUPPORTED));
                     }
                 })
                 .buildAsync();
@@ -75,13 +78,26 @@ public class PlayerActivity extends AppCompatActivity {
 //                        .build();
 //                mediaBrowser.addMediaItem(mediaItem);
 
-//                Log.e("yyyy", "sssssssssss");
 //                SessionCommand command = new SessionCommand("COMMAND_GET_TEXT", new Bundle());
 //                Bundle args;
-//                mediaBrowser.sendCustomCommand(command, new Bundle());
-                mediaBrowser.getSearchResult("aaaaaaaaaa",0,1,null);
-//                mediaBrowser.search("aaaaaaaaaa",null);
-//                TimingOffWorker.startWork(getApplicationContext(),3000);
+////                mediaBrowser.sendCustomCommand(command, new Bundle());
+//
+////                mediaBrowser.getItem("11111111111111");
+//
+////                mediaBrowser.getSearchResult("aaaaaaaaaa",0,1,null);
+//                Bundle extras=new Bundle();
+//                extras.putInt(DJPlaybackService.FU_TIMING_MODE,DJPlaybackService.TIMING_MODE_TIME);
+//                extras.putLong(DJPlaybackService.FU_TIMING_DURATION,10*1000);
+//                MediaLibraryService.LibraryParams params=new MediaLibraryService.LibraryParams.Builder()
+//                        .setExtras(extras)
+//                        .build();
+//                ListenableFuture<LibraryResult<Void>> resultListenableFuture = mediaBrowser.search(DJPlaybackService.FU_COMMAND_SET_TIMING_MODE, params);
+//                try {
+//                    Log.e("sdff",resultListenableFuture.get().params+"");
+//                } catch (ExecutionException | InterruptedException e) {
+//                    throw new RuntimeException(e);
+//                }
+
             }
         });
     }
@@ -93,6 +109,7 @@ public class PlayerActivity extends AppCompatActivity {
                 Log.e("GGGG", "onMediaItemTransition1 mediaItem=" + mediaItem + "  reason=" + reason);
             }
         });
+
         List<MediaItem> list = new ArrayList<>();
 
         Bundle extras = new Bundle();
