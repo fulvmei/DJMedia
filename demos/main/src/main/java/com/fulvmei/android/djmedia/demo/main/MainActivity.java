@@ -2,6 +2,7 @@ package com.fulvmei.android.djmedia.demo.main;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.MediaController;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -42,6 +43,10 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.play4).setOnClickListener(view -> {
             Intent intent = new Intent(MainActivity.this, VodPlayActivity.class);
             intent.putExtra("video",testVideo(url4));
+            startActivity(intent);
+        });
+        findViewById(R.id.listPlay).setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, ListPlayActivity.class);
             startActivity(intent);
         });
     }

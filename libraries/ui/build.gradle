@@ -6,9 +6,9 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:' + androidxTestJUnitVersion
     androidTestImplementation 'androidx.test.espresso:espresso-core:' + androidxTestEspressoVersion
 
-    api project(path: ':libraries:common')
+    api project(modulePrefix + 'lib-common')
 
-    api 'com.github.fulvmei.Media:ui:' + mediaVersion
+    api 'com.github.fulvmei.media:ui:' + mediaVersion
 }
 
 ext {

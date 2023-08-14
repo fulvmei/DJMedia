@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.fulvmei.android.media.ui.PlayerView
+        android:id="@+id/playerView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginVertical="8dp" />
+
+    <com.fulvmei.android.djmedia.ui.DJVideoBufferingView
+        android:id="@+id/bufferingView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginVertical="8dp" />
+
+    <com.fulvmei.android.media.ui.PlayerControlView
+        android:id="@+id/playerControlView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginVertical="8dp" />
+
+</merge>

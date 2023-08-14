@@ -6,7 +6,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:' + androidxTestJUnitVersion
     androidTestImplementation 'androidx.test.espresso:espresso-core:' + androidxTestEspressoVersion
 
-    api 'com.github.fulvmei.Media:common:' + mediaVersion
+    api 'com.github.fulvmei.media:common:' + mediaVersion
 }
 
 ext {

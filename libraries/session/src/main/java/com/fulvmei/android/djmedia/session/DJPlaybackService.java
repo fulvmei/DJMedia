@@ -56,32 +56,34 @@ public class DJPlaybackService extends PlaybackService {
 
     private void updateTiming() {
         closeCountDownTimer();
-        if (currentTiming.getMode() == Timing.MODE_TIME) {
-            untilFinished=currentTiming.getDuration();
-            countDownTimer = new CountDownTimer(currentTiming.getDuration(), 1000) {
-                @Override
-                public void onTick(long millisUntilFinished) {
-                    untilFinished=millisUntilFinished;
-                    Bundle extras = new Bundle();
-                    extras.putLong(FU_KEY_TIMING_UNTIL_FINISHED, millisUntilFinished);
-                    SessionCommand command = new SessionCommand(FU_COMMAND_TIMING_UNTIL_FINISHED_CHANGED, extras);
-                    mediaLibrarySession.broadcastCustomCommand(command, extras);
-                }
-
-                @Override
-                public void onFinish() {
-                    SessionCommand finishedCommand = new SessionCommand(FU_COMMAND_TIMING_FINISHED, new Bundle());
-                    mediaLibrarySession.broadcastCustomCommand(finishedCommand, new Bundle());
-                    currentTiming = Timing.defaultTiming();
-                    notifyTimingChanged();
-                    player.stop();
-                }
-            };
-            countDownTimer.start();
+        if (currentTiming.getMode() == Timing.MODE_OFF) {
+            return;
         }
+
+        untilFinished = currentTiming.getMode() == Timing.MODE_ONE ? player.getDuration() : currentTiming.getDuration();
+        countDownTimer = new CountDownTimer(currentTiming.getDuration(), 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                untilFinished = millisUntilFinished;
+                Bundle extras = new Bundle();
+                extras.putLong(FU_KEY_TIMING_UNTIL_FINISHED, millisUntilFinished);
+                SessionCommand command = new SessionCommand(FU_COMMAND_TIMING_UNTIL_FINISHED_CHANGED, extras);
+                mediaLibrarySession.broadcastCustomCommand(command, extras);
+            }
+
+            @Override
+            public void onFinish() {
+                SessionCommand finishedCommand = new SessionCommand(FU_COMMAND_TIMING_FINISHED, new Bundle());
+                mediaLibrarySession.broadcastCustomCommand(finishedCommand, new Bundle());
+                currentTiming = Timing.defaultTiming();
+                notifyTimingChanged();
+                player.stop();
+            }
+        };
+        countDownTimer.start();
     }
 
-    protected void notifyTimingChanged(){
+    protected void notifyTimingChanged() {
         Bundle extras = new Bundle();
         extras.putParcelable(FU_KEY_TIMING, currentTiming);
         SessionCommand modeChangedCommand = new SessionCommand(FU_COMMAND_TIMING_CHANGED, extras);

@@ -14,16 +14,30 @@ dependencyResolutionManagement {
         mavenLocal()
     }
 }
+
 def rootDir = file(".")
 if (!gradle.ext.has('projectSettingsDir')) {
     gradle.ext.projectSettingsDir = rootDir.getCanonicalPath()
 }
 
-rootProject.name = "DJMedia"
-include ':demos:main'
-include ':libraries:common'
-include ':libraries:session'
-include ':libraries:ui'
+def modulePrefix = ':'
+if (gradle.ext.has('djmediaModulePrefix')) {
+    modulePrefix += gradle.ext.djmediaModulePrefix
+}
 
+rootProject.name = "djmedia"
 
-include ':demos:session'
+include modulePrefix + 'demo'
+project(modulePrefix + 'demo').projectDir = new File(rootDir, 'demos/main')
+include modulePrefix + 'demo-session'
+project(modulePrefix + 'demo-session').projectDir = new File(rootDir, 'demos/session')
+
+include modulePrefix + 'lib-common'
+project(modulePrefix + 'lib-common').projectDir = new File(rootDir, 'libraries/common')
+
+include modulePrefix + 'lib-session'
+project(modulePrefix + 'lib-session').projectDir = new File(rootDir, 'libraries/session')
+
+include modulePrefix + 'lib-ui'
+project(modulePrefix + 'lib-ui').projectDir = new File(rootDir, 'libraries/ui')
+

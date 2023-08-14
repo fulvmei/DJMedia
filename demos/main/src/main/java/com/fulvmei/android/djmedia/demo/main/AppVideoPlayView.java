@@ -36,7 +36,7 @@ import com.fulvmei.android.djmedia.ui.DJVideoPlayErrorView;
 import com.fulvmei.android.djmedia.ui.DJVideoPlayWithoutWifiView;
 import com.fulvmei.android.djmedia.ui.screen.ScreenRotationHelper;
 import com.fulvmei.android.media.ui.BaseStateView;
-import com.fulvmei.android.media.ui.FuPlayerView;
+import com.fulvmei.android.media.ui.PlayerView;
 import com.fulvmei.android.media.ui.StateView;
 
 
@@ -46,7 +46,7 @@ public class AppVideoPlayView extends FrameLayout {
 
     private final ComponentListener componentListener;
 
-    private FuPlayerView playerView;
+    private PlayerView playerView;
     private AppVideoWatermarkView videoWatermarkView;
     private DJVideoImageView videoImageView;
     private DJVideoControlView videoControlView;
