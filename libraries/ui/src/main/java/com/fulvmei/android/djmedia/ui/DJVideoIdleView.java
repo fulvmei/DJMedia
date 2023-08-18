@@ -94,10 +94,7 @@ public class DJVideoIdleView extends BaseStateView {
         if (player == null) {
             return true;
         }
-        if (player.getPlaybackState() == Player.STATE_IDLE && player.getPlayerError() == null) {
-            return true;
-        }
-        return false;
+        return player.getPlaybackState() == Player.STATE_IDLE && player.getPlayerError() == null;
     }
 
     public OnPlayerClickListener getOnPlayerClickListener() {

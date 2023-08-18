@@ -54,11 +54,7 @@ public class DJVideoImageView extends BaseStateView {
 
     @Override
     protected void onAttachedToPlayer(@NonNull Player player) {
-        if (player.getPlaybackState() == Player.STATE_READY && player.getPlayWhenReady()) {
-            hasFirstFrame = true;
-        } else {
-            hasFirstFrame = false;
-        }
+        hasFirstFrame = player.getPlaybackState() == Player.STATE_READY && player.getPlayWhenReady();
         updateVisibility();
 
         player.addListener(componentListener);
